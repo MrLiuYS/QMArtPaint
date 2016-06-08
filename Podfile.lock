@@ -1,0 +1,44 @@
+PODS:
+  - BmobSDK (1.7.0)
+  - Google-Mobile-Ads-SDK (7.7.1)
+  - IQKeyboardManager (3.3.7)
+  - JSPatch (1.0):
+    - JSPatch/Core (= 1.0)
+  - JSPatch/Core (1.0)
+  - MJRefresh (3.1.0)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage-Category (1.4):
+    - SDWebImage
+  - SDWebImage/Core (3.7.5)
+  - SimplePurchase (0.0.1)
+  - SVProgressHUD-0.8.1 (0.8)
+  - UMengAnalytics (3.6.6)
+  - UMengSocial (4.4)
+
+DEPENDENCIES:
+  - BmobSDK
+  - Google-Mobile-Ads-SDK (~> 7.7.1)
+  - IQKeyboardManager (~> 3.3.7)
+  - JSPatch (~> 1.0)
+  - MJRefresh (~> 3.1.0)
+  - SDWebImage-Category (~> 1.4)
+  - SimplePurchase (~> 0.0.1)
+  - SVProgressHUD-0.8.1 (~> 0.8)
+  - UMengAnalytics (~> 3.6.6)
+  - UMengSocial (~> 4.4)
+
+SPEC CHECKSUMS:
+  BmobSDK: 1a7bb2aa514e69663f5b561a5c5cc5b479b20ad2
+  Google-Mobile-Ads-SDK: e27569901b58881d9a94b42f2c642739cfe3970a
+  IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
+  JSPatch: c689ea4dde17441f2f4a95d40dfedb8900c20099
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SDWebImage-Category: 1f1c00880a538f7faf5b726e1559cf1ca555c553
+  SimplePurchase: 5ed9b5fe46ee946636298257d24ba2990c427a21
+  SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
+  UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
+  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
+
+COCOAPODS: 0.39.0
