@@ -59,6 +59,7 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
+  install_resource "JGProgressHUD/JGProgressHUD/JGProgressHUD/JGProgressHUD Resources.bundle"
   install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_click_image.png"
@@ -66,7 +67,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_click_image@3x.png"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_noimage.png"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_noimage@2x.png"
-  install_resource "SVProgressHUD-0.8.1/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_4.4/UMSocialSDKResourcesNew.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_Extra_Frameworks/SinaSSO/WeiboSDK.bundle"
@@ -83,6 +83,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
+  install_resource "JGProgressHUD/JGProgressHUD/JGProgressHUD/JGProgressHUD Resources.bundle"
   install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_click_image.png"
@@ -90,7 +91,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_click_image@3x.png"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_noimage.png"
   install_resource "SDWebImage-Category/SDWebImage-Category/Resource/lk_noimage@2x.png"
-  install_resource "SVProgressHUD-0.8.1/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_4.4/UMSocialSDKResourcesNew.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "UMengSocial/Umeng_SDK_Social_iOS_ARM64_4.4/UMSocial_Sdk_Extra_Frameworks/SinaSSO/WeiboSDK.bundle"
