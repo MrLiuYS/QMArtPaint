@@ -25,7 +25,7 @@
     bquery.limit = kLimitNumber;
     bquery.skip = aSkip * bquery.limit;
     
-    [bquery orderByAscending:@"readNum"];
+    [bquery orderByDescending:@"readNum"];
     
     [bquery addTheConstraintByOrOperationWithArray:aArray];
     

@@ -18,6 +18,8 @@
 		3EFC94EE1D0945EB0052F818 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC94ED1D0945EB0052F818 /* Model.m */; };
 		3EFC94F21D0948B00052F818 /* WaterCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC94F01D0948B00052F818 /* WaterCollectionCell.m */; };
 		3EFC94F31D0948B00052F818 /* WaterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC94F11D0948B00052F818 /* WaterCollectionCell.xib */; };
+		3EFC94F71D096A730052F818 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC94F51D096A730052F818 /* DetailViewController.m */; };
+		3EFC94F81D096A730052F818 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC94F61D096A730052F818 /* DetailViewController.xib */; };
 		A8A2E0869F198247B5F50D35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D743B5271E555FCD867D6B6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,9 @@
 		3EFC94EF1D0948B00052F818 /* WaterCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterCollectionCell.h; sourceTree = "<group>"; };
 		3EFC94F01D0948B00052F818 /* WaterCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterCollectionCell.m; sourceTree = "<group>"; };
 		3EFC94F11D0948B00052F818 /* WaterCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterCollectionCell.xib; sourceTree = "<group>"; };
+		3EFC94F41D096A730052F818 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3EFC94F51D096A730052F818 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3EFC94F61D096A730052F818 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		5D743B5271E555FCD867D6B6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADC3E0C2FC606A379764B7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +90,9 @@
 				3EFC94EA1D0944CF0052F818 /* QMViewController.m */,
 				0DE4380D1D07DA930016FBD5 /* ViewController.h */,
 				0DE4380E1D07DA930016FBD5 /* ViewController.m */,
+				3EFC94F41D096A730052F818 /* DetailViewController.h */,
+				3EFC94F51D096A730052F818 /* DetailViewController.m */,
+				3EFC94F61D096A730052F818 /* DetailViewController.xib */,
 				3EFC94EF1D0948B00052F818 /* WaterCollectionCell.h */,
 				3EFC94F01D0948B00052F818 /* WaterCollectionCell.m */,
 				3EFC94F11D0948B00052F818 /* WaterCollectionCell.xib */,
@@ -188,6 +196,7 @@
 			files = (
 				0DE438171D07DA930016FBD5 /* LaunchScreen.storyboard in Resources */,
 				0DE438141D07DA930016FBD5 /* Assets.xcassets in Resources */,
+				3EFC94F81D096A730052F818 /* DetailViewController.xib in Resources */,
 				0DE438121D07DA930016FBD5 /* Main.storyboard in Resources */,
 				3EFC94F31D0948B00052F818 /* WaterCollectionCell.xib in Resources */,
 			);
@@ -251,6 +260,7 @@
 				0DE4380F1D07DA930016FBD5 /* ViewController.m in Sources */,
 				3EFC94F21D0948B00052F818 /* WaterCollectionCell.m in Sources */,
 				3EFC94E81D0944390052F818 /* Service.m in Sources */,
+				3EFC94F71D096A730052F818 /* DetailViewController.m in Sources */,
 				3EFC94EB1D0944CF0052F818 /* QMViewController.m in Sources */,
 				3EFC94EE1D0945EB0052F818 /* Model.m in Sources */,
 				0DE4380C1D07DA930016FBD5 /* AppDelegate.m in Sources */,

@@ -12,6 +12,9 @@
 #import <UIImageView+WebCache.h>
 #import <MJRefresh.h>
 
+
+#import "DetailViewController.h"
+
 #define CELL_IDENTIFIER @"WaterCollectionCell"
 
 @interface ViewController ()
@@ -86,10 +89,11 @@
                        
                        [self.cellDatas removeAllObjects];
                        
+                       [self.cellDatas addObjectsFromArray:responseObj];
                        
-                       for (id obj in responseObj) {
-                           [self.cellDatas addObject:[Model model:obj]];
-                       }
+                       //                       for (id obj in responseObj) {
+                       //                           [self.cellDatas addObject:[Model model:obj]];
+                       //                       }
                        
                        [self.collectionView reloadData];
                        
@@ -115,9 +119,11 @@
                        
                        [self.collectionView.mj_footer endRefreshing];
                        
-                       for (id obj in responseObj) {
-                           [self.cellDatas addObject:[Model model:obj]];
-                       }
+                       [self.cellDatas addObjectsFromArray:responseObj];
+                       
+                       //                       for (id obj in responseObj) {
+                       //                           [self.cellDatas addObject:[Model model:obj]];
+                       //                       }
                        
                        [self.collectionView reloadData];
                        
@@ -167,28 +173,45 @@
     (WaterCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                      forIndexPath:indexPath];
     
-    Model *model = self.cellDatas[indexPath.row];
+    BmobObject *model = self.cellDatas[indexPath.row];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail]
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
                       placeholderImage:nil];
+    
+    cell.imageNameLabel.text = [model objectForKey:@"title"];
+    
     
     return cell;
 }
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    BmobObject *model = self.cellDatas[indexPath.row];
+    
+    [DetailViewController pushInViewController:self bmobObject:model];
+    
+    
+}
+
 
 #pragma mark - CHTCollectionViewDelegateWaterfallLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    BmobObject *model = self.cellDatas[indexPath.row];
     
-    Model *model = self.cellDatas[indexPath.row];
     
-    if (model.thumbHeight > 50) {
+    double thumbWidth = [[model objectForKey:@"thumbWidth"] doubleValue];
+    double thumbHeight = [[model objectForKey:@"thumbHeight"] doubleValue];
+    
+    if (thumbHeight > 50) {
         
-        return [[NSValue valueWithCGSize:CGSizeMake(model.thumbWidth, model.thumbHeight)] CGSizeValue];
+        return [[NSValue valueWithCGSize:CGSizeMake(thumbWidth, thumbHeight)] CGSizeValue];
     }
     
-    
-    return [[NSValue valueWithCGSize:CGSizeMake(model.thumbWidth, model.thumbHeight + 50)] CGSizeValue];
+    return [[NSValue valueWithCGSize:CGSizeMake(thumbWidth, thumbHeight + 50)] CGSizeValue];
     
 }
 
