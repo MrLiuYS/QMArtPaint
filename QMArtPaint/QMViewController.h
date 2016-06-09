@@ -10,6 +10,8 @@
 
 #import "Service.h"
 
+#define SystemVersion ([[UIDevice currentDevice] systemVersion]) 
+
 @interface QMViewController : UIViewController
 
 @end

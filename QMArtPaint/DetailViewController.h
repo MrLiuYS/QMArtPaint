@@ -8,7 +8,16 @@
 
 #import "QMViewController.h"
 
-@interface DetailViewController : QMViewController
+@interface DetailViewController : QMViewController {
+    
+    __weak IBOutlet UILabel *_titleLabel;
+    
+    __weak IBOutlet UIImageView *_artImageView;
+    
+    __weak IBOutlet UILabel *_artExpalinLabel;
+    
+    
+}
 
 @property (nonatomic, strong) BmobObject *bmobObject;
 

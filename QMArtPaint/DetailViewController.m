@@ -7,7 +7,7 @@
 //
 
 #import "DetailViewController.h"
-
+#import <UIImageView+WebCache.h>
 @interface DetailViewController ()
 
 @end
@@ -35,6 +35,24 @@
             NSLog(@"%@",error);
         }
     }];
+    
+    _titleLabel.text = [NSString stringWithFormat:@"%@-%@",[_bmobObject objectForKey:@"title"],
+                        [_bmobObject objectForKey:@"author"]];
+    
+    _artExpalinLabel.text = [_bmobObject objectForKey:@"explain"];
+    
+    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"thumbnail"]]
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                
+                                [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
+                                                 placeholderImage:image];
+                                
+                                
+                            }];
+    
+    
+    
+    
     
     
 }

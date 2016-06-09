@@ -69,12 +69,26 @@
     _collectionView.delegate = nil;
     _collectionView.dataSource = nil;
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([SystemVersion floatValue] >= 8.0) {
+        self.navigationController.hidesBarsOnSwipe = YES;    
+    }
+    
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addSubview:self.collectionView];
+    
+    
+    self.navigationController.hidesBarsOnSwipe = YES;
     
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
