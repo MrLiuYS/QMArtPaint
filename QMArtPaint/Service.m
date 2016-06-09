@@ -25,6 +25,8 @@
     bquery.limit = kLimitNumber;
     bquery.skip = aSkip * bquery.limit;
     
+    [bquery orderByAscending:@"readNum"];
+    
     [bquery addTheConstraintByOrOperationWithArray:aArray];
     
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {

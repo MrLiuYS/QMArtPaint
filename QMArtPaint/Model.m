@@ -24,8 +24,11 @@
     model.imageUrl = [aBmob objectForKey:@"imageUrl"];
     model.thumbnail = [aBmob objectForKey:@"thumbnail"];
     
+    model.objectID = aBmob.objectId;
     
-    
+    model.thumbWidth = [[aBmob objectForKey:@"thumbWidth"] doubleValue];
+    model.thumbHeight = [[aBmob objectForKey:@"thumbHeight"] doubleValue];
+    model.readNum = [[aBmob objectForKey:@"readNum"] intValue];
     
     return model;
 }
