@@ -6,9 +6,14 @@
 //  Copyright © 2016年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "QMViewController.h"
 
-@interface ViewController : UIViewController
+#import <CHTCollectionViewWaterfallLayout.h>
+
+@interface ViewController : QMViewController <UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
+
+
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 
 @end
