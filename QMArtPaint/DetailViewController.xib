@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="_artExpalinLabel" destination="Ebk-gd-EpG" id="t8l-LS-9Rv"/>
                 <outlet property="_artImageView" destination="I11-EG-sFI" id="IXy-jh-ksN"/>
+                <outlet property="_artImageViewHeight" destination="VnF-ce-7Cl" id="5Tp-Au-b1k"/>
                 <outlet property="_titleLabel" destination="2LO-os-VmT" id="uVh-WZ-7ZJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,10 +37,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bO-3a-103">
-                            <rect key="frame" x="10" y="74" width="300" height="300"/>
+                            <rect key="frame" x="10" y="74" width="300" height="0.0"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I11-EG-sFI">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="VnF-ce-7Cl"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,18 +52,17 @@
                                 <constraint firstAttribute="bottom" secondItem="I11-EG-sFI" secondAttribute="bottom" id="D9h-hU-1Ei"/>
                                 <constraint firstAttribute="trailing" secondItem="I11-EG-sFI" secondAttribute="trailing" id="SUj-UT-rv0"/>
                                 <constraint firstItem="I11-EG-sFI" firstAttribute="top" secondItem="7bO-3a-103" secondAttribute="top" id="Vre-Hc-OOw"/>
-                                <constraint firstAttribute="width" secondItem="7bO-3a-103" secondAttribute="height" multiplier="1:1" id="uL6-uQ-2sy"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5e-Hb-ic2">
-                            <rect key="frame" x="10" y="408" width="300" height="300"/>
+                            <rect key="frame" x="10" y="108" width="300" height="300"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="T5e-Hb-ic2" secondAttribute="height" multiplier="1:1" id="tGs-zR-WWk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haR-rJ-7qQ">
-                            <rect key="frame" x="10" y="374" width="300" height="26"/>
+                            <rect key="frame" x="10" y="74" width="300" height="26"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebk-gd-EpG">
                                     <rect key="frame" x="5" y="5" width="290" height="16"/>

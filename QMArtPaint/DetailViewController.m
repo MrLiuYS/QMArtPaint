@@ -8,7 +8,15 @@
 
 #import "DetailViewController.h"
 #import <UIImageView+WebCache.h>
-@interface DetailViewController ()
+#import <MWPhotoBrowser.h>
+
+@interface DetailViewController () {
+    
+    
+    __weak IBOutlet NSLayoutConstraint *_artImageViewHeight;
+    
+    
+}
 
 @end
 
@@ -41,14 +49,22 @@
     
     _artExpalinLabel.text = [_bmobObject objectForKey:@"explain"];
     
-    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"thumbnail"]]
-                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                
-                                [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
-                                                 placeholderImage:image];
-                                
-                                
-                            }];
+    
+    double thumbWidth = [[_bmobObject objectForKey:@"thumbWidth"] doubleValue];
+    double thumbHeight = [[_bmobObject objectForKey:@"thumbHeight"] doubleValue];
+    
+    _artImageViewHeight.constant = _artImageView.frame.size.width/thumbWidth * thumbHeight;
+    
+    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
+                     placeholderImage:nil];
+    
+    
+    //    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"thumbnail"]]
+    //                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    //                                
+    //                                [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
+    //                                                 placeholderImage:image];
+    //                            }];
     
     
     
