@@ -41,11 +41,9 @@
     }
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     
     [self readNum];
     
@@ -60,16 +58,14 @@
     
     _artExpalinLabel.text = [_bmobObject objectForKey:@"explain"];
     
-    
     double thumbWidth = [[_bmobObject objectForKey:@"thumbWidth"] doubleValue];
+    
     double thumbHeight = [[_bmobObject objectForKey:@"thumbHeight"] doubleValue];
     
     _artImageViewHeight.constant = _artImageView.frame.size.width/thumbWidth * thumbHeight;
     
-    
     [_artImageView setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
        usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
     
 }
 
@@ -77,11 +73,13 @@
  *  阅读次数加1
  */
 - (void)readNum {
+    
     int readNum = [[_bmobObject objectForKey:@"readNum"] intValue];
     
     [_bmobObject setObject:[NSNumber numberWithInt:++readNum] forKey:@"readNum"];
     
     [_bmobObject updateInBackgroundWithResultBlock:nil];
+    
 }
 
 
