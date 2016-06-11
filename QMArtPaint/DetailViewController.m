@@ -7,42 +7,53 @@
 //
 
 #import "DetailViewController.h"
-#import <UIImageView+WebCache.h>
+#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <MWPhotoBrowser.h>
 
 @interface DetailViewController () {
     
+    __weak IBOutlet UICollectionView *_tagCollectionView;
     
     __weak IBOutlet NSLayoutConstraint *_artImageViewHeight;
     
     
 }
 
+@property (nonatomic, strong) NSMutableArray *tags;
+@property (nonatomic, strong) NSMutableArray *relateds;
+
 @end
 
 @implementation DetailViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([SystemVersion floatValue] >= 8.0) {
+        self.navigationController.hidesBarsOnSwipe = NO;
+    }
+    
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if ([SystemVersion floatValue] >= 8.0) {
+        self.navigationController.hidesBarsOnSwipe = YES;
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     
-    int readNum = [[_bmobObject objectForKey:@"readNum"] intValue];
+    [self readNum];
     
-    NSLog(@"更新前:readnum:%d",readNum);
+    [self defaultUI];
     
-    [_bmobObject setObject:[NSNumber numberWithInt:++readNum] forKey:@"readNum"];
-    
-    [_bmobObject updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        
-        if (isSuccessful) {
-            
-            NSLog(@"更新后:readnum:%d",[[_bmobObject objectForKey:@"readNum"] intValue]);
-            
-        } else {
-            NSLog(@"%@",error);
-        }
-    }];
+}
+
+- (void)defaultUI {
     
     _titleLabel.text = [NSString stringWithFormat:@"%@-%@",[_bmobObject objectForKey:@"title"],
                         [_bmobObject objectForKey:@"author"]];
@@ -55,28 +66,42 @@
     
     _artImageViewHeight.constant = _artImageView.frame.size.width/thumbWidth * thumbHeight;
     
-    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
-                     placeholderImage:nil];
     
-    
-    //    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"thumbnail"]]
-    //                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-    //                                
-    //                                [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
-    //                                                 placeholderImage:image];
-    //                            }];
-    
-    
-    
-    
+    [_artImageView setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
+       usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+/**
+ *  阅读次数加1
+ */
+- (void)readNum {
+    int readNum = [[_bmobObject objectForKey:@"readNum"] intValue];
+    
+    [_bmobObject setObject:[NSNumber numberWithInt:++readNum] forKey:@"readNum"];
+    
+    [_bmobObject updateInBackgroundWithResultBlock:nil];
 }
+
+
+#pragma mark - proprety
+
+- (NSMutableArray *)tags {
+    if (!_tags) {
+        _tags = [[NSMutableArray alloc]init];
+    }
+    return _tags;
+}
+- (NSMutableArray *)relateds {
+    if (!_relateds) {
+        _relateds = [[NSMutableArray alloc]init];
+    }
+    return _relateds;
+}
+
+
+#pragma mark - Public
 
 + (void)pushInViewController:(UIViewController *)aViewController bmobObject:(BmobObject *)aBmobObject{
     

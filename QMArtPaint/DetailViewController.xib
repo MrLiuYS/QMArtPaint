@@ -11,6 +11,7 @@
                 <outlet property="_artExpalinLabel" destination="Ebk-gd-EpG" id="t8l-LS-9Rv"/>
                 <outlet property="_artImageView" destination="I11-EG-sFI" id="IXy-jh-ksN"/>
                 <outlet property="_artImageViewHeight" destination="VnF-ce-7Cl" id="5Tp-Au-b1k"/>
+                <outlet property="_tagCollectionView" destination="EBV-uo-buR" id="Eck-LB-ImL"/>
                 <outlet property="_titleLabel" destination="2LO-os-VmT" id="uVh-WZ-7ZJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,14 +27,29 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题-作者" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-os-VmT">
                             <rect key="frame" x="10" y="8" width="300" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHH-nC-iu4">
                             <rect key="frame" x="10" y="36" width="300" height="30"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EBV-uo-buR">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4iV-XY-h0h">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="EBV-uo-buR" secondAttribute="bottom" id="2hF-lQ-Lhx"/>
+                                <constraint firstItem="EBV-uo-buR" firstAttribute="leading" secondItem="MHH-nC-iu4" secondAttribute="leading" id="EvJ-6E-ESc"/>
+                                <constraint firstItem="EBV-uo-buR" firstAttribute="top" secondItem="MHH-nC-iu4" secondAttribute="top" id="mr1-tE-iNS"/>
                                 <constraint firstAttribute="height" constant="30" id="p8D-q3-fzj"/>
+                                <constraint firstAttribute="trailing" secondItem="EBV-uo-buR" secondAttribute="trailing" id="v3X-Dh-VO6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bO-3a-103">
@@ -56,8 +72,28 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5e-Hb-ic2">
                             <rect key="frame" x="10" y="108" width="300" height="300"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关作品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir7-PD-hq2">
+                                    <rect key="frame" x="5" y="5" width="52" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwm-nd-HNx">
+                                    <rect key="frame" x="5" y="24" width="290" height="1"/>
+                                    <color key="backgroundColor" red="0.94117647059999998" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="hZs-Cw-hea"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="nwm-nd-HNx" firstAttribute="leading" secondItem="T5e-Hb-ic2" secondAttribute="leading" constant="5" id="PWQ-DD-0tD"/>
+                                <constraint firstItem="Ir7-PD-hq2" firstAttribute="leading" secondItem="T5e-Hb-ic2" secondAttribute="leading" constant="5" id="aFk-hS-eKl"/>
+                                <constraint firstItem="Ir7-PD-hq2" firstAttribute="top" secondItem="T5e-Hb-ic2" secondAttribute="top" constant="5" id="e1H-G4-jY6"/>
+                                <constraint firstAttribute="trailing" secondItem="nwm-nd-HNx" secondAttribute="trailing" constant="5" id="g6j-xX-ifq"/>
+                                <constraint firstItem="nwm-nd-HNx" firstAttribute="top" secondItem="Ir7-PD-hq2" secondAttribute="bottom" constant="3" id="ldT-A9-tsa"/>
                                 <constraint firstAttribute="width" secondItem="T5e-Hb-ic2" secondAttribute="height" multiplier="1:1" id="tGs-zR-WWk"/>
                             </constraints>
                         </view>
@@ -67,7 +103,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebk-gd-EpG">
                                     <rect key="frame" x="5" y="5" width="290" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

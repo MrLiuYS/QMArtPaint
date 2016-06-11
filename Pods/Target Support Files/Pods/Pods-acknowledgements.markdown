@@ -902,9 +902,9 @@ THE SOFTWARE.
 
 
 
-## SDWebImage-Category
+## SimplePurchase
 
-Copyright (c) 2012 Jianghuai Li (https://github.com/li6185377)
+Copyright (c) 2013 Chad Hendry
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -924,9 +924,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## SimplePurchase
 
-Copyright (c) 2013 Chad Hendry
+## UIActivityIndicator-for-SDWebImage
+
+Copyright (C) 2014 by Giacomo Saccardo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

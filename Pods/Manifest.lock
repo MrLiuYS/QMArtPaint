@@ -18,10 +18,10 @@ PODS:
     - SDWebImage (!= 3.7.2, ~> 3.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
-  - SDWebImage-Category (1.4):
-    - SDWebImage
   - SDWebImage/Core (3.7.5)
   - SimplePurchase (0.0.1)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
   - UMengAnalytics (3.6.6)
   - UMengSocial (4.4)
 
@@ -34,8 +34,8 @@ DEPENDENCIES:
   - JSPatch (~> 1.0)
   - MJRefresh (~> 3.1.0)
   - MWPhotoBrowser (~> 2.1.2)
-  - SDWebImage-Category (~> 1.4)
   - SimplePurchase (~> 0.0.1)
+  - UIActivityIndicator-for-SDWebImage (~> 1.2)
   - UMengAnalytics (~> 3.6.6)
   - UMengSocial (~> 4.4)
 
@@ -51,8 +51,8 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SDWebImage-Category: 1f1c00880a538f7faf5b726e1559cf1ca555c553
   SimplePurchase: 5ed9b5fe46ee946636298257d24ba2990c427a21
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
   UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
 
