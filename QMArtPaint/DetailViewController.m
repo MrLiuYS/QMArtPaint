@@ -10,7 +10,12 @@
 #import <UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <MWPhotoBrowser.h>
 
-@interface DetailViewController () {
+#import "TagCollectionCell.h"
+
+static NSString * const idenTagCollectionCell = @"TagCollectionCell";
+
+
+@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     
     __weak IBOutlet UICollectionView *_tagCollectionView;
     
@@ -47,6 +52,9 @@
     
     [self readNum];
     
+    [self.tags addObjectsFromArray:[[_bmobObject objectForKey:@"tag"] componentsSeparatedByString:@" "]];
+    
+    
     [self defaultUI];
     
 }
@@ -67,6 +75,12 @@
     [_artImageView setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
        usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
+    
+    
+    [_tagCollectionView registerNib:[UINib nibWithNibName:@"TagCollectionCell" bundle:nil]
+         forCellWithReuseIdentifier:idenTagCollectionCell];
+    
+    
 }
 
 /**
@@ -82,6 +96,57 @@
     
 }
 
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    if (collectionView == _tagCollectionView) {
+        return 1;
+    }
+    return 0;
+    
+    //    return self.count;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (collectionView == _tagCollectionView) {
+        
+        return self.tags.count;
+    }
+    
+    return 0;
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    TagCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:idenTagCollectionCell forIndexPath:indexPath];
+    
+    NSString * tag = self.tags[indexPath.row];
+    
+    cell.tagLabel.text = tag;
+    
+    return cell;
+}
+#pragma mark --UICollectionViewDelegateFlowLayout
+//定义每个UICollectionView 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * tag = self.tags[indexPath.row];
+    
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:13]};
+    CGSize textSize = [tag boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                     attributes:attribute
+                                        context:nil].size;
+    
+    return CGSizeMake(ceilf(textSize.width), ceilf(textSize.height));
+    
+}
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(5,5, 5, 5);
+}
 
 #pragma mark - proprety
 
