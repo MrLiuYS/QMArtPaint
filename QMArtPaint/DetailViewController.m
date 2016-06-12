@@ -62,8 +62,8 @@ static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 
 - (void)defaultUI {
     
-    _titleLabel.text = [NSString stringWithFormat:@"%@-%@",[_bmobObject objectForKey:@"title"],
-                        [_bmobObject objectForKey:@"author"]];
+    self.title = [NSString stringWithFormat:@"%@-%@",[_bmobObject objectForKey:@"title"],
+                  [_bmobObject objectForKey:@"author"]];
     
     _artExpalinLabel.text = [_bmobObject objectForKey:@"explain"];
     
