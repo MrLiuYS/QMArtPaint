@@ -1,12 +1,13 @@
 //
-//  ViewController.m
+//  SearchViewController.m
 //  QMArtPaint
 //
-//  Created by 刘永生 on 16/6/8.
+//  Created by 刘永生 on 16/6/12.
 //  Copyright © 2016年 刘永生. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SearchViewController.h"
+
 
 #import "WaterCollectionCell.h"
 //#import <UIImageView+WebCache.h>
@@ -14,11 +15,10 @@
 #import <MJRefresh.h>
 
 #import "DetailViewController.h"
-#import "SearchViewController.h"
 
 #define CELL_IDENTIFIER @"WaterCollectionCell"
 
-@interface ViewController () <UIAlertViewDelegate>
+@interface SearchViewController ()
 
 @property (nonatomic, strong) NSMutableArray *cellDatas;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation ViewController
+@implementation SearchViewController
 
 #pragma mark - Accessors
 
@@ -74,14 +74,17 @@
     [super viewWillAppear:animated];
     
     if ([SystemVersion floatValue] >= 8.0) {
-        self.navigationController.hidesBarsOnSwipe = YES;    
+        self.navigationController.hidesBarsOnSwipe = NO;
     }
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    if ([SystemVersion floatValue] >= 8.0) {
+        self.navigationController.hidesBarsOnSwipe = YES;
+    }
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,7 +98,7 @@
         
         self.intPage = 0;
         
-        [Service searchStr:@""
+        [Service searchStr:self.searchStr
                       skip:self.intPage
                 constraint:nil
                    success:^(NSArray * responseObj) {
@@ -127,7 +130,7 @@
         
         self.intPage ++;
         
-        [Service searchStr:@""
+        [Service searchStr:self.searchStr
                       skip:self.intPage
                 constraint:nil
                    success:^(NSArray * responseObj) {
@@ -234,40 +237,29 @@
     
 }
 
+#pragma mark - Public
 
-#pragma mark - event
-
-- (IBAction)touchSearch:(id)sender {
++ (void)pushInViewController:(UIViewController *)aViewController searchStr:(NSString *)aSearchStr{
     
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"搜索"
-                                                    message:@"请输入要搜索的画作信息"
-                                                   delegate:self
-                                          cancelButtonTitle:@"取消"
-                                          otherButtonTitles:@"搜索", nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
+    SearchViewController * ctrl = [SearchViewController searchViewController];
     
+    ctrl.searchStr = aSearchStr;
     
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    [self.view endEditing:YES];
-    
-    if (buttonIndex == 1) {
-        
-        UITextField *alertViewTF = [alertView textFieldAtIndex:0];
-        
-        NSString * searchStr = alertViewTF.text;
-        
-        [SearchViewController pushInViewController:self searchStr:searchStr];
+    if (aSearchStr.length > 0) {
+        ctrl.title = aSearchStr;
     }
     
+    [aViewController.navigationController pushViewController:ctrl animated:YES];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
++ (SearchViewController *)searchViewController {
+    
+    SearchViewController *ctrl = [[SearchViewController alloc]initWithNibName:@"SearchViewController"
+                                                                       bundle:nil];
+    
+    return ctrl;
 }
+
 
 @end

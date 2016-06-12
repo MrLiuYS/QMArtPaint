@@ -27,7 +27,25 @@
     
     [bquery orderByDescending:@"readNum"];
     
-    [bquery addTheConstraintByOrOperationWithArray:aArray];
+    if (aArray) {
+        
+        [bquery addTheConstraintByOrOperationWithArray:aArray];
+        
+    }else {
+        
+        NSMutableArray * constraint = [NSMutableArray array];
+        
+        [constraint addObject:@{@"tag":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+        [constraint addObject:@{@"author":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+        [constraint addObject:@{@"explain":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+        [constraint addObject:@{@"title":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+        
+        [constraint addObject:@{@"related":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+        
+        [bquery addTheConstraintByOrOperationWithArray:constraint];
+    }
+    
+    
     
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
         

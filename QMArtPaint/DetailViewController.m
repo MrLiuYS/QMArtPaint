@@ -11,6 +11,7 @@
 #import <MWPhotoBrowser.h>
 
 #import "TagCollectionCell.h"
+#import "SearchViewController.h"
 
 static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 
@@ -145,8 +146,19 @@ static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5,5, 5, 5);
+    return UIEdgeInsetsMake(0,0, 0, 5);
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString * tag = self.tags[indexPath.row];
+    
+    [SearchViewController pushInViewController:self searchStr:tag];
+    
+}
+
+
 
 #pragma mark - proprety
 
