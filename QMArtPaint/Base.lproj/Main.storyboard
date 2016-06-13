@@ -19,6 +19,11 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="名画收录" id="VfR-59-9sG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="j8o-TX-nOU">
+                            <connections>
+                                <action selector="touchExpain:" destination="BYZ-38-t0r" id="2dR-2I-OIz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="bd0-d0-Ppk">
                             <connections>
                                 <action selector="touchSearch:" destination="BYZ-38-t0r" id="dz6-Xn-MZF"/>
