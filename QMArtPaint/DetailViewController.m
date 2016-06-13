@@ -16,7 +16,8 @@
 static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 
 
-@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface DetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate,
+MWPhotoBrowserDelegate> {
     
     __weak IBOutlet UICollectionView *_tagCollectionView;
     
@@ -27,6 +28,8 @@ static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 
 @property (nonatomic, strong) NSMutableArray *tags;
 @property (nonatomic, strong) NSMutableArray *relateds;
+
+@property (nonatomic, strong) NSMutableArray *photos;
 
 @end
 
@@ -159,6 +162,51 @@ static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 }
 
 
+- (IBAction)touchImageView:(id)sender {
+    
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    
+    MWPhoto *photo;
+    
+    photo = [MWPhoto photoWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]];
+    photo.caption = [NSString stringWithFormat:@"%@-%@",[_bmobObject objectForKey:@"title"],
+                     [_bmobObject objectForKey:@"author"]];;
+    [photos addObject:photo];
+    
+    self.photos = photos;
+    
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = NO;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = NO;
+    browser.zoomPhotosToFill = NO;
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    browser.autoPlayOnAppear = NO;
+    [browser setCurrentPhotoIndex:0];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:nc animated:YES completion:nil];
+    
+}
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id )photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
+}
+
+- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - proprety
 

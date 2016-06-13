@@ -67,12 +67,16 @@
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="I11-EG-sFI" firstAttribute="leading" secondItem="7bO-3a-103" secondAttribute="leading" id="9zr-ni-FM1"/>
                                 <constraint firstAttribute="bottom" secondItem="I11-EG-sFI" secondAttribute="bottom" id="D9h-hU-1Ei"/>
                                 <constraint firstAttribute="trailing" secondItem="I11-EG-sFI" secondAttribute="trailing" id="SUj-UT-rv0"/>
                                 <constraint firstItem="I11-EG-sFI" firstAttribute="top" secondItem="7bO-3a-103" secondAttribute="top" id="Vre-Hc-OOw"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="bcZ-Dt-w9M" appends="YES" id="stc-vW-YMR"/>
+                            </connections>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5e-Hb-ic2">
                             <rect key="frame" x="10" y="80.5" width="300" height="0.0"/>
@@ -151,5 +155,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="280" y="447"/>
         </view>
+        <tapGestureRecognizer id="bcZ-Dt-w9M">
+            <connections>
+                <action selector="touchImageView:" destination="-1" id="6Ca-t4-ZC8"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
