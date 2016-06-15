@@ -252,7 +252,7 @@
 - (IBAction)touchExpain:(id)sender {
     
     UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"声明"
-                                                    message:@"图片,信息来源于网络.\n如有侵权,请告知.确认即删除."
+                                                    message:@"图片,信息,如没有特殊注明,均来来源于网络.\n如有侵权,请告知.确认属实即删除."
                                                    delegate:nil
                                           cancelButtonTitle:@"明白了"
                                           otherButtonTitles:nil, nil];

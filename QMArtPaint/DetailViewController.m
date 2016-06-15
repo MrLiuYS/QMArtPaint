@@ -61,6 +61,9 @@ MWPhotoBrowserDelegate> {
     
     [self defaultUI];
     
+    
+    [GQMAdSupper showTableScreenInViewController:self];
+    
 }
 
 - (void)defaultUI {

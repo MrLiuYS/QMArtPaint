@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "QMAdSupper.h"
+
 #import "Service.h"
 
 #define SystemVersion ([[UIDevice currentDevice] systemVersion]) 
