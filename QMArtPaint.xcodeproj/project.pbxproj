@@ -216,6 +216,7 @@
 				TargetAttributes = {
 					0DE438031D07DA930016FBD5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = K6D5KQ7QKW;
 					};
 				};
 			};
@@ -433,6 +434,7 @@
 			baseConfigurationReference = 36269EBDF2A38C630E60A868 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = QMArtPaint/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -447,6 +449,7 @@
 			baseConfigurationReference = 6ADC3E0C2FC606A379764B7F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
