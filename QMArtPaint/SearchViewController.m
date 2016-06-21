@@ -10,8 +10,8 @@
 
 
 #import "WaterCollectionCell.h"
-//#import <UIImageView+WebCache.h>
-#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import <UIImageView+WebCache.h>
+//#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <MJRefresh.h>
 
 #import "DetailViewController.h"
@@ -193,9 +193,9 @@
     
     BmobObject *model = self.cellDatas[indexPath.row];
     
-    
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
-        usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]];
+    //    [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
+    //        usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     //    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
     //                      placeholderImage:nil];

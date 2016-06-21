@@ -7,7 +7,9 @@
 //
 
 #import "DetailViewController.h"
-#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
+//#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
+
+#import <UIImageView+WebCache.h>
 #import <MWPhotoBrowser.h>
 
 #import "TagCollectionCell.h"
@@ -79,9 +81,11 @@ MWPhotoBrowserDelegate> {
     
     _artImageViewHeight.constant = _artImageView.frame.size.width/thumbWidth * thumbHeight;
     
-    [_artImageView setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
-       usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //    [_artImageView setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]
+    //       usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
+    
+    [_artImageView sd_setImageWithURL:[NSURL URLWithString:[_bmobObject objectForKey:@"imageUrl"]]];
     
     
     [_tagCollectionView registerNib:[UINib nibWithNibName:@"TagCollectionCell" bundle:nil]
