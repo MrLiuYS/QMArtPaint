@@ -27,6 +27,8 @@
     
     [bquery orderByDescending:@"readNum"];
     
+    [bquery whereKey:@"showSource" equalTo:@0];
+    
     if (aArray) {
         
         [bquery addTheConstraintByOrOperationWithArray:aArray];
@@ -34,6 +36,9 @@
     }else {
         
         NSMutableArray * constraint = [NSMutableArray array];
+        
+        //        bool bool_false = false;
+        //        [constraint addObject:@{@"showSource":@0}];
         
         [constraint addObject:@{@"tag":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
         [constraint addObject:@{@"author":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];

@@ -10,8 +10,8 @@
 
 
 #import "WaterCollectionCell.h"
-#import <UIImageView+WebCache.h>
-//#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
+//#import <UIImageView+WebCache.h>
+#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
 #import <MJRefresh.h>
 
 #import "DetailViewController.h"
@@ -193,12 +193,20 @@
     
     BmobObject *model = self.cellDatas[indexPath.row];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]];
-    //    [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
-    //        usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    //    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
-    //                      placeholderImage:nil];
+    if ([[model objectForKey:@"imagesource"] boolValue]) {
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
+            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+    }else {
+        
+        NSString * href = [model objectForKey:@"href"];
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:href]
+            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    
     
     cell.imageNameLabel.text = [model objectForKey:@"title"];
     
