@@ -1,7 +1,7 @@
 //
 //  UIView+Hierarchy.h
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-15 Iftekhar Qurashi.
+// Copyright (c) 2013-16 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@
 /**
  Returns YES if IQKeyboardManager asking for `canBecomeFirstResponder. Useful when doing custom work in `textFieldShouldBeginEditing:` delegate.
  */
-@property (nonatomic, readonly) BOOL isAskingCanBecomeFirstResponder;
+@property (nonatomic, readonly) BOOL isAskingCanBecomeFirstResponder __attribute__((deprecated("isAskingCanBecomeFirstResponder property was come to existence as a workaround to handle `textFieldShouldBeginEditing:` multiple call issue, but we removed `canBecomeFirstResponder` method call from library, now this property make no sense and will be removed in future releases. From now this property will always return NO because of not calling `canBecomeFirstResponder` method. Please update your code/logic in `textFieldShouldBeginEditing:` method.")));
 
 ///----------------------
 /// @name viewControllers

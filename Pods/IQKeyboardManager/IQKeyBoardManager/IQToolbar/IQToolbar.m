@@ -1,7 +1,7 @@
 //
 //  IQToolbar.m
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-15 Iftekhar Qurashi.
+// Copyright (c) 2013-16 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,14 +32,9 @@
 @synthesize titleFont = _titleFont;
 @synthesize title = _title;
 
-Class IQUIToolbarTextButtonClass;
-Class IQUIToolbarButtonClass;
-
-
-+(void)load
++(void)initialize
 {
-    IQUIToolbarTextButtonClass = NSClassFromString(@"UIToolbarTextButton");
-    IQUIToolbarButtonClass = NSClassFromString(@"UIToolbarButton");
+    [super initialize];
 
     //Tint Color
     [[self appearance] setTintColor:nil];
@@ -99,6 +94,28 @@ Class IQUIToolbarButtonClass;
     return sizeThatFit;
 }
 
+-(void)setBarStyle:(UIBarStyle)barStyle
+{
+    [super setBarStyle:barStyle];
+    
+    for (UIBarButtonItem *item in self.items)
+    {
+        if ([item isKindOfClass:[IQTitleBarButtonItem class]])
+        {
+            if (barStyle == UIBarStyleDefault)
+            {
+                [(IQTitleBarButtonItem*)item setSelectableTextColor:[UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0]];
+            }
+            else
+            {
+                [(IQTitleBarButtonItem*)item setSelectableTextColor:[UIColor yellowColor]];
+            }
+            
+            break;
+        }
+    }
+}
+
 -(void)setTintColor:(UIColor *)tintColor
 {
     [super setTintColor:tintColor];
@@ -118,6 +135,7 @@ Class IQUIToolbarButtonClass;
         if ([item isKindOfClass:[IQTitleBarButtonItem class]])
         {
             [(IQTitleBarButtonItem*)item setFont:titleFont];
+            break;
         }
     }
 }
@@ -131,6 +149,35 @@ Class IQUIToolbarButtonClass;
         if ([item isKindOfClass:[IQTitleBarButtonItem class]])
         {
             [(IQTitleBarButtonItem*)item setTitle:title];
+            break;
+        }
+    }
+}
+
+-(void)setTitleTarget:(nullable id)target action:(nullable SEL)action
+{
+    NSInvocation *invocation = nil;
+    
+    if (target && action)
+    {
+        invocation = [NSInvocation invocationWithMethodSignature:[target methodSignatureForSelector:action]];
+        invocation.target = target;
+        invocation.selector = action;
+    }
+    
+    self.titleInvocation = invocation;
+}
+
+-(void)setTitleInvocation:(NSInvocation*)invocation
+{
+    _titleInvocation = invocation;
+
+    for (UIBarButtonItem *item in self.items)
+    {
+        if ([item isKindOfClass:[IQTitleBarButtonItem class]])
+        {
+            [(IQTitleBarButtonItem*)item setTitleInvocation:_titleInvocation];
+            break;
         }
     }
 }
@@ -174,10 +221,15 @@ Class IQUIToolbarButtonClass;
         {
             isTitleBarButtonFound = YES;
         }
-        else if ([barButtonItemView isKindOfClass:IQUIToolbarTextButtonClass] ||
-            [barButtonItemView isKindOfClass:IQUIToolbarButtonClass])
+        else
         {
-            leftRect = barButtonItemView.frame;
+            NSString *classNameString = NSStringFromClass([barButtonItemView class]);
+            
+            //If it's UIToolbarButton or UIToolbarTextButton
+            if (([classNameString hasPrefix:@"UIToolbar"] && [classNameString hasSuffix:@"Button"]))
+            {
+                leftRect = barButtonItemView.frame;
+            }
         }
     }
     

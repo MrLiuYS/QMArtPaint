@@ -1,5 +1,5 @@
 //
-//  UIWindow+Hierarchy.m
+// IQPreviousNextView.m
 // https://github.com/hackiftekhar/IQKeyboardManager
 // Copyright (c) 2013-16 Iftekhar Qurashi.
 //
@@ -21,31 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "IQUIWindow+Hierarchy.h"
-#import <UIKit/UINavigationController.h>
+#import "IQPreviousNextView.h"
 
-@implementation UIWindow (IQ_UIWindow_Hierarchy)
-
-- (UIViewController*)topMostController
-{
-    UIViewController *topController = [self rootViewController];
-    
-    //  Getting topMost ViewController
-    while ([topController presentedViewController])	topController = [topController presentedViewController];
-	
-    //  Returning topMost ViewController
-    return topController;
-}
-
-- (UIViewController*)currentViewController;
-{
-    UIViewController *currentViewController = [self topMostController];
-    
-    while ([currentViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController*)currentViewController topViewController])
-        currentViewController = [(UINavigationController*)currentViewController topViewController];
-    
-    return currentViewController;
-}
-
+@implementation IQPreviousNextView
 
 @end

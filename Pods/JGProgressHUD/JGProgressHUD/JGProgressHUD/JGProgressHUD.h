@@ -126,13 +126,22 @@
 @property (nonatomic, strong) JGProgressHUDIndicatorView *indicatorView;
 
 /**
- Interaction type of the HUD.
+ Interaction type of the HUD. Determines whether touches should be let through to the views behind the HUD.
  
  @sa JGProgressHUDInteractionType.
  
  @b Default: JGProgressHUDInteractionTypeBlockAllTouches.
  */
 @property (nonatomic, assign) JGProgressHUDInteractionType interactionType;
+
+/**
+ Parallax mode for the HUD. This setting determines whether the HUD should have a parallax (@c UIDeviceMotion) effect.
+ 
+ @sa JGProgressHUDParallaxMode.
+ 
+ @b Default: JGProgressHUDParallaxModeDevice.
+ */
+@property (nonatomic, assign) JGProgressHUDParallaxMode parallaxMode;
 
 /**
  The appearance style of the HUD.
@@ -191,7 +200,7 @@
 @property (nonatomic, assign) NSTimeInterval layoutChangeAnimationDuration;
 
 /**
- If the HUD is visible on screen.
+ @return Whether the HUD is visible on screen.
  */
 @property (nonatomic, assign, readonly, getter = isVisible) BOOL visible;
 
