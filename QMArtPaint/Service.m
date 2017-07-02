@@ -27,27 +27,41 @@
     
     [bquery orderByDescending:@"readNum"];
     
-    [bquery whereKey:@"showSource" equalTo:@0];
     
     if (aArray) {
         
-        [bquery addTheConstraintByOrOperationWithArray:aArray];
+//        [bquery addTheConstraintByOrOperationWithArray:aArray];
+        
+        [bquery whereKey:@"author" equalTo:aSearchStr];
+        
+//        [bquery whereKey:@"tag" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
+
         
     }else {
         
-        NSMutableArray * constraint = [NSMutableArray array];
         
-        //        bool bool_false = false;
-        //        [constraint addObject:@{@"showSource":@0}];
+//        [bquery whereKey:@"showSource" equalTo:@0];
         
-        [constraint addObject:@{@"tag":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-        [constraint addObject:@{@"author":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-        [constraint addObject:@{@"explain":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-        [constraint addObject:@{@"title":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        [bquery whereKey:@"tag" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
+//        [bquery whereKey:@"author" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
+//        [bquery whereKey:@"explain" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
+//        [bquery whereKey:@"title" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
+//        [bquery whereKey:@"related" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
         
-        [constraint addObject:@{@"related":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
         
-        [bquery addTheConstraintByOrOperationWithArray:constraint];
+//        NSMutableArray * constraint = [NSMutableArray array];
+//        
+//        //        bool bool_false = false;
+//        //        [constraint addObject:@{@"showSource":@0}];
+//        
+//        [constraint addObject:@{@"tag":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        [constraint addObject:@{@"author":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        [constraint addObject:@{@"explain":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        [constraint addObject:@{@"title":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        
+//        [constraint addObject:@{@"related":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
+//        
+//        [bquery addTheConstraintByOrOperationWithArray:constraint];
     }
     
     

@@ -25,6 +25,8 @@ targetsArray = ['QMArtPaint']
 targetsArray.each do |t|
     target t do
         
+        pod 'Realm'
+        
         pod 'BmobSDK'
         
         pod 'UMengAnalytics'
