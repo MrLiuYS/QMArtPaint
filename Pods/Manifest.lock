@@ -13,6 +13,9 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
+  - Realm (2.8.0):
+    - Realm/Headers (= 2.8.0)
+  - Realm/Headers (2.8.0)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -30,6 +33,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - MJRefresh
   - MWPhotoBrowser
+  - Realm
   - SimplePurchase
   - UIActivityIndicator-for-SDWebImage
   - UMengAnalytics
@@ -45,12 +49,13 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: d226bbe0b1ec398f426ba1dc99319b4e51182e19
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  Realm: 929243ad2b618b3232e70658bedc61110e7563f1
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SimplePurchase: 5ed9b5fe46ee946636298257d24ba2990c427a21
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
   UMengSocial: 48b67179c492a8cf7803fbb0438b8f55432e2fc1
 
-PODFILE CHECKSUM: 25935378575c2f1055ab62ca282df4a06c3a567c
+PODFILE CHECKSUM: 8ef2d9430cb04cbf712ffb54c505f361b0555188
 
 COCOAPODS: 1.2.1
