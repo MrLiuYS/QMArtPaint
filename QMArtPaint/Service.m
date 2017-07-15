@@ -7,9 +7,9 @@
 //
 
 #import "Service.h"
+#import <FMDBHelper.h>
 
-
-#define kLimitNumber 50
+#define kLimitNumber 200
 
 @implementation Service
 
@@ -20,66 +20,127 @@
           success:(requestSuccessBlock)successHandler
           failure:(requestFailureBlock)failureHandler {
     
-    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"art"];
-    
-    bquery.limit = kLimitNumber;
-    bquery.skip = aSkip * bquery.limit;
-    
-    [bquery orderByDescending:@"readNum"];
-    
-    
-    if (aArray) {
-        
-//        [bquery addTheConstraintByOrOperationWithArray:aArray];
-        
-        [bquery whereKey:@"author" equalTo:aSearchStr];
-        
-//        [bquery whereKey:@"tag" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-
-        
-    }else {
-        
-        
-//        [bquery whereKey:@"showSource" equalTo:@0];
-        
-//        [bquery whereKey:@"tag" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-//        [bquery whereKey:@"author" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-//        [bquery whereKey:@"explain" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-//        [bquery whereKey:@"title" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-//        [bquery whereKey:@"related" matchesWithRegex:[NSString stringWithFormat:@".*%@.*",aSearchStr]];
-        
-        
-//        NSMutableArray * constraint = [NSMutableArray array];
-//        
-//        //        bool bool_false = false;
-//        //        [constraint addObject:@{@"showSource":@0}];
-//        
-//        [constraint addObject:@{@"tag":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-//        [constraint addObject:@{@"author":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-//        [constraint addObject:@{@"explain":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-//        [constraint addObject:@{@"title":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-//        
-//        [constraint addObject:@{@"related":@{@"$regex":[NSString stringWithFormat:@".*%@.*",aSearchStr]}}];
-//        
-//        [bquery addTheConstraintByOrOperationWithArray:constraint];
-    }
     
     
     
-    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+    
+    [Bmob getAllTableSchemasWithCallBack:^(NSArray *tableSchemasArray, NSError *error) {
         
-        if (error) {
+        
+        NSMutableArray * keyArray = [NSMutableArray array];
+        
+        NSMutableArray * tableArray = [NSMutableArray array];
+        
+        for (BmobTableSchema* bmobTableSchema in tableSchemasArray) {
+            //直接用description来查看表结构
+            NSLog(@"%@",bmobTableSchema.description);
             
-            failureHandler(error);
+            /*
+             分别打印表结构
+             */
+            //打印表名
+            NSLog(@"表名:%@",bmobTableSchema.className);
             
-        } else {
             
-            successHandler(array);
+            if ([bmobTableSchema.className isEqualToString:@"art"]) {
+                
+                //打印表结构
+                NSDictionary *fields = bmobTableSchema.fields;
+                NSArray *allKey = [fields allKeys];
+                
+                for (NSString *key in allKey) {
+                    
+                    NSLog(@"列名:%@",key);
+                    
+                    [keyArray addObject:key];
+                    
+                    NSString * type = fields[key][@"type"];
+                    
+                    NSString * valueSql = [NSString stringWithFormat:@"%@ %@",key,type];
+                    
+                    if ([key isEqualToString:@"href"]) {
+                        valueSql = [NSString stringWithFormat:@"%@ PRIMARY KEY",valueSql];
+                    }
+                    
+                    [tableArray addObject:valueSql];
+                    
+                }
+                
+                
+            }
             
         }
+        
+        NSString * tableStr = [tableArray componentsJoinedByString:@", "];
+        
+        tableStr = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS __NSDictionaryM ( %@ )",tableStr];
+        
+        
+        [FMDBHelper createTable:tableStr];
+        
+        //        @"CREATE TABLE IF NOT EXISTS minghua (href TEXT PRIMARY KEY, title TEXT , related text , tag text , explain text , author text)"
+        
+        
+        
+        
+        BmobQuery   *bquery = [BmobQuery queryWithClassName:@"art"];
+        
+        bquery.limit = kLimitNumber;
+        bquery.skip = aSkip * bquery.limit;
+        
+        [bquery orderByDescending:@"readNum"];
+        
+        
+        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            
+            if (error) {
+                
+                failureHandler(error);
+                
+            } else {
+                
+                
+                
+                for (BmobObject * pObj in array) {
+                    
+                    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+                    
+                    for (NSString * pkey in keyArray) {
+                        
+                        id value = [pObj objectForKey:pkey];
+                        
+                        [dic setValue:value forKey:pkey];
+                        
+                    }
+                    
+                    [FMDBHelper insertObject:dic];
+                    
+                }
+                
+                
+                successHandler(array);
+                
+            }
+        }];
+        
+        
+        
+        
+        
+        
     }];
     
+    
+    
+    
+    
 }
+
+
+
+
+
+
 
 
 @end

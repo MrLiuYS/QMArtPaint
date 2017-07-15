@@ -25,7 +25,7 @@ targetsArray = ['QMArtPaint']
 targetsArray.each do |t|
     target t do
         
-        pod 'Realm'
+        pod 'FMDBHelper', '~> 1.0.5'
         
         pod 'BmobSDK'
         

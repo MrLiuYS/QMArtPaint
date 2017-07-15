@@ -4,6 +4,11 @@ PODS:
     - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.4)
   - CHTCollectionViewWaterfallLayout/ObjC (0.9.4)
   - DACircularProgress (2.3.1)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - FMDBHelper (1.0.5):
+    - FMDB (= 2.6.2)
   - Google-Mobile-Ads-SDK (7.7.1)
   - IQKeyboardManager (4.0.10)
   - JGProgressHUD (1.4)
@@ -13,9 +18,6 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
-  - Realm (2.8.0):
-    - Realm/Headers (= 2.8.0)
-  - Realm/Headers (2.8.0)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -28,12 +30,12 @@ PODS:
 DEPENDENCIES:
   - BmobSDK
   - CHTCollectionViewWaterfallLayout
+  - FMDBHelper (~> 1.0.5)
   - Google-Mobile-Ads-SDK
   - IQKeyboardManager
   - JGProgressHUD
   - MJRefresh
   - MWPhotoBrowser
-  - Realm
   - SimplePurchase
   - UIActivityIndicator-for-SDWebImage
   - UMengAnalytics
@@ -43,19 +45,20 @@ SPEC CHECKSUMS:
   BmobSDK: ebc3cb46b90d746f23121e9ea058a3122b85861f
   CHTCollectionViewWaterfallLayout: db74be9135826d285f45ff163fd090e57c99fc50
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  FMDBHelper: 77f6ff463c8b15a6b6f1a3cc072fdc17950dd3af
   Google-Mobile-Ads-SDK: e27569901b58881d9a94b42f2c642739cfe3970a
   IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
   JGProgressHUD: 1617b0940cf80bb53e8f7d6f0fd69252ea45d6d4
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: d226bbe0b1ec398f426ba1dc99319b4e51182e19
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
-  Realm: 929243ad2b618b3232e70658bedc61110e7563f1
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SimplePurchase: 5ed9b5fe46ee946636298257d24ba2990c427a21
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
   UMengSocial: 48b67179c492a8cf7803fbb0438b8f55432e2fc1
 
-PODFILE CHECKSUM: 8ef2d9430cb04cbf712ffb54c505f361b0555188
+PODFILE CHECKSUM: dbfeacb54e6bd7b4ff3c6c90e7b3ba499f9eee1b
 
 COCOAPODS: 1.2.1
