@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import <BmobSDK/Bmob.h>
-
 
 #import <FMDBHelper.h>
 
@@ -23,9 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    [FMDBHelper setDataBaseName:@"LYSARTPAINT"];
+    [FMDBHelper setDataBaseName:@"LYSARTPAINT.db"];
     
-//    [Bmob registerWithAppKey:@"c900b921e4021b8ac5f789ac96b289c9"];
     
     return YES;
 }

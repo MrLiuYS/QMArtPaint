@@ -193,18 +193,18 @@
     //    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]];
     
     
-//    if ([[model objectForKey:@"imagesource"] boolValue]) {
-//        
-//        [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
-//            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//        
-//    }else {
-//        
-//        NSString * href = [model objectForKey:@"href"];
-//        
-//        [cell.imageView setImageWithURL:[NSURL URLWithString:href]
-//            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    }
+    if ([[model objectForKey:@"imagesource"] boolValue]) {
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:[model objectForKey:@"thumbnail"]]
+            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+    }else {
+        
+        NSString * href = [model objectForKey:@"href"];
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:href]
+            usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
     
     
     

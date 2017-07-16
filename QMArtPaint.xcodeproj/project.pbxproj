@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D0FC1071D12115300D30B72 /* QMAdSupper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0FC1061D12115300D30B72 /* QMAdSupper.m */; };
 		0D0FC1091D1214B900D30B72 /* Default-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0FC1081D1214B900D30B72 /* Default-568.png */; };
+		0D17B1071F1AD8ED0060356D /* LYSARTPAINT.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D17B1061F1AD8ED0060356D /* LYSARTPAINT.db */; };
 		0D98E9621D0DA5FB00E43322 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D98E9601D0DA5FB00E43322 /* SearchViewController.m */; };
 		0D98E9631D0DA5FB00E43322 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D98E9611D0DA5FB00E43322 /* SearchViewController.xib */; };
 		0DE438091D07DA930016FBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE438081D07DA930016FBD5 /* main.m */; };
@@ -37,6 +38,7 @@
 		0D0FC1051D12115300D30B72 /* QMAdSupper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMAdSupper.h; sourceTree = "<group>"; };
 		0D0FC1061D12115300D30B72 /* QMAdSupper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMAdSupper.m; sourceTree = "<group>"; };
 		0D0FC1081D1214B900D30B72 /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
+		0D17B1061F1AD8ED0060356D /* LYSARTPAINT.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = LYSARTPAINT.db; path = "../../MrLYS-Life/program/名画收录/LYSARTPAINT.db"; sourceTree = "<group>"; };
 		0D98E95F1D0DA5FB00E43322 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		0D98E9601D0DA5FB00E43322 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		0D98E9611D0DA5FB00E43322 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		0DE437FB1D07DA930016FBD5 = {
 			isa = PBXGroup;
 			children = (
+				0D17B1061F1AD8ED0060356D /* LYSARTPAINT.db */,
 				0DE438061D07DA930016FBD5 /* QMArtPaint */,
 				0DE438051D07DA930016FBD5 /* Products */,
 				19A65B31A9DF7CBC74F1CFE0 /* Pods */,
@@ -252,6 +255,7 @@
 				0D98E9631D0DA5FB00E43322 /* SearchViewController.xib in Resources */,
 				0D0FC1091D1214B900D30B72 /* Default-568.png in Resources */,
 				3EFC94F31D0948B00052F818 /* WaterCollectionCell.xib in Resources */,
+				0D17B1071F1AD8ED0060356D /* LYSARTPAINT.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

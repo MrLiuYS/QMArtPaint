@@ -107,7 +107,7 @@ static NSString *dbName = @"LYSARTPAINT.db";
     
     [keyValues enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if (obj && ![obj isEqual:[NSNull null]]) {
-            [settings addObject:[NSString stringWithFormat:@"%@=?", key]];
+            [settings addObject:[NSString stringWithFormat:@"%@=%@", key,obj]];
             [values addObject:obj];
         }
     }];
@@ -161,6 +161,33 @@ static NSString *dbName = @"LYSARTPAINT.db";
     
     return (result.count > 0) ? result.firstObject : nil;
 }
+
++ (NSMutableArray *)query:(NSString *)table sql:(NSString *)sql, ... {
+    NSAssert(table && sql, @"table or sql cannot be nil!");
+    
+    NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    va_list args;
+    va_start(args, sql);
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:[self dbPath]];
+    
+    if ([db open]) {
+        FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ %@", table, sql] withVAList:args];
+        while ([rs next]) {
+            [result addObject:[rs resultDictionary]];
+        }
+        
+        [db close];
+    }
+    
+    db = nil;
+    
+    va_end(args);
+    
+    return result;
+}
+
 
 + (NSMutableArray *)query:(NSString *)table where:(NSString *)where, ... {
     NSAssert(table && where, @"table or where cannot be nil!");

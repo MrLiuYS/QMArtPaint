@@ -104,6 +104,7 @@
  *  Select * from @table @where
  */
 + (NSMutableArray *)query:(NSString *)table where:(NSString *)where, ... NS_REQUIRES_NIL_TERMINATION;
++ (NSMutableArray *)query:(NSString *)table sql:(NSString *)sql, ... NS_REQUIRES_NIL_TERMINATION;
 
 /**
  *  Select count(id) from @table

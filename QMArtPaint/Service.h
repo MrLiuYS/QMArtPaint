@@ -32,4 +32,7 @@ typedef void (^requestProgressBlock)(CGFloat progress);
           success:(requestSuccessBlock)successHandler
           failure:(requestFailureBlock)failureHandler;
 
+
++ (BOOL)updateKeyValues:(NSDictionary *)keyValues href:(NSString *)href;
+
 @end

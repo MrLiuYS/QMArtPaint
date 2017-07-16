@@ -15,6 +15,8 @@
 #import "TagCollectionCell.h"
 #import "SearchViewController.h"
 
+#import <FMDBHelper.h>
+
 static NSString * const idenTagCollectionCell = @"TagCollectionCell";
 
 
@@ -112,12 +114,34 @@ MWPhotoBrowserDelegate> {
  *  阅读次数加1
  */
 - (void)readNum {
+
+    [Service updateKeyValues:@{@"updatedAt": [NSString stringWithFormat:@"'%@'",[NSDate date]]}
+                        href:[NSString stringWithFormat:@"'%@'",[_bmobObject objectForKey:@"href"]]];
     
-    int readNum = [[_bmobObject objectForKey:@"readNum"] intValue];
     
-    [_bmobObject setObject:[NSNumber numberWithInt:++readNum] forKey:@"readNum"];
     
-    [_bmobObject updateInBackgroundWithResultBlock:nil];
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"art"];
+    //查找GameScore表里面id为0c6db13c的数据
+    [bquery getObjectInBackgroundWithId:[NSString stringWithFormat:@"%@",[_bmobObject objectForKey:@"objectId"]] block:^(BmobObject *object,NSError *error){
+        //没有返回错误
+        if (!error) {
+            //对象存在
+            if (object) {
+                
+                
+                int readNum = [[_bmobObject objectForKey:@"readNum"] intValue];
+                
+                [object setObject:[NSNumber numberWithInt:++readNum] forKey:@"readNum"];
+                
+                [object updateInBackgroundWithResultBlock:nil];
+
+                
+            }
+        }else{
+            //进行错误处理
+        }
+    }];
+    
     
 }
 
